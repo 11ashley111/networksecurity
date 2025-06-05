@@ -1,21 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Data Table</title>
+    <title>Phishing URL Detection</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h2 {
+            color: #333;
+        }
+        input[type="text"], input[type="file"] {
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
         table {
             border-collapse: collapse;
             width: 100%;
+            margin-top: 20px;
         }
         th, td {
-            border: 1px solid black;
+            border: 1px solid #444;
             padding: 8px;
             text-align: left;
+        }
+        .phishing {
+            color: red;
+        }
+        .legitimate {
+            color: green;
+        }
+        .form-section {
+            margin-bottom: 50px;
         }
     </style>
 </head>
 <body>
-    <h2>Predicted Data</h2>
-    {{ table | safe }}
+    <h2>Phishing URL Detection</h2>
+
+    <div class="form-section">
+        <h3>Check Single URL</h3>
+        <form method="post" action="/predict_url">
+            <input type="text" name="url" placeholder="Enter URL here..." required />
+            <input type="submit" value="Check" />
+        </form>
+
+        {% if url %}
+            <div class="result">
+                URL: <strong>{{ url }}</strong><br>
+                Prediction: 
+                <span class="{{ 'phishing' if prediction == 'Phishing' else 'legitimate' }}">
+                    {{ prediction }}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="form-section">
+        <h3>Upload CSV for Bulk Prediction</h3>
+        <form method="post" action="/predict" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv" required />
+            <input type="submit" value="Upload & Predict" />
+        </form>
+
+        {% if table %}
+            <h3>CSV Prediction Results</h3>
+            {{ table | safe }}
+        {% endif %}
+    </div>
 </body>
 </html>

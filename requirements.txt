@@ -11,5 +11,12 @@ mlflow
 dagshub
 fastapi
 uvicorn
+tldextract
+python-whois
+requests
+jinja2
+beautifulsoup4
+lxml
+requests
 
 ##-e .

@@ -1,9 +1,0 @@
-[ 2025-06-05 03:09:45,673 ] 1025 httpx - INFO - HTTP Request: POST https://dagshub.com/login/oauth/middleman "HTTP/1.1 200 OK"
-[ 2025-06-05 03:09:46,176 ] 1025 httpx - INFO - HTTP Request: POST https://dagshub.com/login/oauth/access_token "HTTP/1.1 200 OK"
-[ 2025-06-05 03:09:46,734 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
-[ 2025-06-05 03:09:46,737 ] 107 dagshub - INFO - Accessing as ashlyyy6969
-[ 2025-06-05 03:09:47,360 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/ashlyyy6969/networksecurity "HTTP/1.1 200 OK"
-[ 2025-06-05 03:09:48,307 ] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
-[ 2025-06-05 03:09:48,311 ] 107 dagshub - INFO - Initialized MLflow to track repo "ashlyyy6969/networksecurity"
-[ 2025-06-05 03:09:48,312 ] 107 dagshub - INFO - Repository ashlyyy6969/networksecurity initialized!
-[ 2025-06-05 03:09:48,312 ] 20 root - INFO - Initiate the data ingestion
