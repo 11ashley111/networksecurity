@@ -110,6 +110,6 @@ async def predict_url(request: Request, url: str = Form(...)):
             "prediction": f"Error: {str(e)}"
         })
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT",10000))
-    uvicorn.run("app:app", host="0.0.0.0", port=port)
+#if __name__ == "__main__":
+ #   port = int(os.environ.get("PORT",10000))
+  #  uvicorn.run("app:app", host="0.0.0.0", port=port)
