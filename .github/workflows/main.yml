@@ -1,26 +1,24 @@
-name: CI Workflow
+name: Deploy to Heroku
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - "README.md"
+    branches: [main]
 
 jobs:
-  integration:
-    name: Continuous Integration
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Lint code
-        run: |
-          echo "Linting repository"
-
-      - name: Run unit tests
-        run: |
-          echo "Running unit tests"
-        
+      - name: Build, Push and Release Docker container to Heroku
+        uses: gonuit/heroku-docker-deploy@v1.3.3
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }}          # Your Heroku account email (set as secret)
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}  # Heroku API key (set as secret)
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} # Your Heroku app name (set as secret)
+          dockerfile_directory: ./                      # Path to Dockerfile (root here)
+          dockerfile_name: Dockerfile                    # Dockerfile name (default)
+          docker_options: "--no-cache"                    # Optional, rebuild without cache
+          process_type: web                              # Heroku process type (usually web)
