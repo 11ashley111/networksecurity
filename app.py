@@ -110,4 +110,5 @@ async def predict_url(request: Request, url: str = Form(...)):
         })
 
 if __name__ == "__main__":
-    app_run(app, host="localhost", port=8000)
+    port = int(os.getenv("PORT",8000))
+    app_run(app, host="localhost", port=port)
