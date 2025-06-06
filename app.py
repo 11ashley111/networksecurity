@@ -2,6 +2,7 @@ import sys
 import os
 import certifi
 ca = certifi.where()
+import uvicorn
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -110,5 +111,5 @@ async def predict_url(request: Request, url: str = Form(...)):
         })
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT",8000))
-    app_run(app, host="0.0.0.0", port=port)
+    port = int(os.environ.get("PORT",8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
